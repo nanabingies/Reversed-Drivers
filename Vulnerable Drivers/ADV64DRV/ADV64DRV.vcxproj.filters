@@ -13,6 +13,9 @@
       <UniqueIdentifier>{8E41214B-6785-4CFE-B992-037D68949A14}</UniqueIdentifier>
       <Extensions>inf;inv;inx;mof;mc;</Extensions>
     </Filter>
+    <Filter Include="Disassembled Driver Codes">
+      <UniqueIdentifier>{de750572-5544-4eb8-8495-94a75b7fabe1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Inf Include="ADV64DRV.inf">
@@ -41,5 +44,10 @@
     <MASM Include="sub_11460.asm">
       <Filter>Source Files</Filter>
     </MASM>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="sub_113D0.h">
+      <Filter>Disassembled Driver Codes</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
