@@ -152,6 +152,7 @@
   <ItemGroup>
     <MASM Include="ida.asm" />
     <MASM Include="sub_11010.asm" />
+    <MASM Include="sub_11040.asm" />
     <MASM Include="sub_113D0.asm" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
