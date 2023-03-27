@@ -12,14 +12,14 @@ MD5: 778B7FEEA3C750D44745D3BF294BD4CE
 SHA-1: 2261198385D62D2117F50F631652EDED0ECC71DB
 
 
-[See full IDA disasembly](ida.asm)
+[See full IDA disasembly](Driver%20Codes/ida.asm)
 
 
 
 
 ## IMPORTS
 
-![alt text](Driver%20Codes/imports.png)
+![alt text](imports.png)
 
 
 ## EXPORTS
