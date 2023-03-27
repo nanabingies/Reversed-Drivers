@@ -152,6 +152,9 @@
   <ItemGroup>
     <Image Include="..\..\..\..\..\..\Documents\GitHub\ADV64DRV\imports.png" />
   </ItemGroup>
+  <ItemGroup>
+    <MASM Include="ida.asm" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
