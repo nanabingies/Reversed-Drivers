@@ -7,7 +7,7 @@ struct _v2 {
 	ULONG a5;		// 0x10
 	PVOID a6;		// 0x18
 };
-NTSTATUS sub_119F0(PVOID* systemBuffer, PVOID* devExt) {
+NTSTATUS sub_119F0(PVOID systemBuffer, PVOID devExt) {
 	if (!systemBuffer) {
 		return STATUS_UNSUCCESSFUL;
 	}
