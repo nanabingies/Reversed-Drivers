@@ -155,6 +155,7 @@
     <MASM Include="sub_11040.asm" />
     <MASM Include="sub_11170.asm" />
     <MASM Include="sub_113D0.asm" />
+    <MASM Include="sub_11460.asm" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
