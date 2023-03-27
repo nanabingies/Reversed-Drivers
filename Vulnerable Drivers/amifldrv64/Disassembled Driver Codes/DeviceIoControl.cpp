@@ -1,4 +1,3 @@
-#include <ntddk.h>
 
 __int64 __fastcall DeviceIoControl(
     int ioctlCode,
@@ -9,7 +8,7 @@ __int64 __fastcall DeviceIoControl(
     unsigned long* a6,
     __int64 devExt)
 {
-    unsigned int v9; // ebx
+    NTSTATUS v9; // ebx
 
     switch (ioctlCode)
     {
@@ -17,7 +16,7 @@ __int64 __fastcall DeviceIoControl(
         if (!a4 || !systemBuffer || outBufLength != inBufLength && outBufLength < 0x10)
             goto LABEL_35;
         v9 = sub_119F0(systemBuffer, devExt);
-        if (!v9)
+        if (STATUS_SUCCESSS(v9))
         {
             *a6 = 20;
             goto LABEL_28;
@@ -33,7 +32,7 @@ __int64 __fastcall DeviceIoControl(
         if (!systemBuffer)
             goto LABEL_35;
         v9 = MapPhysical(systemBuffer);
-        if (!v9)
+        if (STATUS_SUCCESSS(v9))
         {
             *a6 = 20;
             memmove(a4, systemBuffer, 20i64);
@@ -43,7 +42,7 @@ __int64 __fastcall DeviceIoControl(
         if (!a4 || !systemBuffer || outBufLength != inBufLength && outBufLength < 0x10)
             goto LABEL_35;
         v9 = VulnFunc(systemBuffer);
-        if (!v9)
+        if (STATUS_SUCCESSS(v9))
         {
             *a6 = 16;
             memmove(a4, systemBuffer, 16i64);
@@ -59,7 +58,7 @@ __int64 __fastcall DeviceIoControl(
         if (!systemBuffer)
             goto LABEL_35;
         v9 = UnmapPhysical(*(_QWORD*)systemBuffer, *(int*)(systemBuffer + 16));
-        if (!v9)
+        if (STATUS_SUCCESSS(v9))
         {
             *a6 = 20;
         LABEL_28:
