@@ -31,16 +31,16 @@ The driver initialization function exists at offset *0x11500* which calls functi
 
 ### IRP DISPATCH ROUTINES
 
-[sub_11010](sub_11010.asm) -> IRP_MJ_CREATE 
+[sub_11010](Driver%20Codes/sub_11010.asm) -> IRP_MJ_CREATE 
 
-[sub_11010](sub_11010.asm) -> IRP_MJ_CLOSE
+[sub_11010](Driver%20Codes/sub_11010.asm) -> IRP_MJ_CLOSE
 
-[sub_11460](sub_11460.asm) -> IRP_MJ_DEVICE_CONTROL
+[sub_11460](Driver%20Codes/sub_11460.asm) -> IRP_MJ_DEVICE_CONTROL
 
-[sub_113D0](sub_113D0.asm) -> DRIVER_UNLOAD
+[sub_113D0](Driver%20Codes/sub_113D0.asm) -> DRIVER_UNLOAD
 
 ![alt text](dispatch_routines.png)
 
-The driver sets up a [driver unload function](driverunload.com) 
+The driver sets up a [driver unload function](Driver%20Codes/sub_113D0.asm) 
 
 
