@@ -150,10 +150,8 @@
     <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\..\..\..\..\..\Documents\GitHub\ADV64DRV\imports.png" />
-  </ItemGroup>
-  <ItemGroup>
     <MASM Include="ida.asm" />
+    <MASM Include="sub_113D0.asm" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
