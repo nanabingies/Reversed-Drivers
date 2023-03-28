@@ -10,11 +10,11 @@ EXTERN_C NTSTATUS DriverEntry(_In_ PDRIVER_OBJECT DriverObject, _In_ PUNICODE_ST
 	struct _devExt* devExt;
 	NTSTATUS status;
 
-	DriverObject->MajorFunction[IRP_MJ_CREATE] = DefaultIoctl;
-	DriverObject->MajorFunction[IRP_MJ_CLOSE] = DefaultIoctl;
-	DriverObject->MajorFunction[IRP_MJ_DEVICE_CONTROL] = DefaultIoctl;
+	DriverObject->MajorFunction[IRP_MJ_CREATE] = Fn_DefaultIoctl;
+	DriverObject->MajorFunction[IRP_MJ_CLOSE] = Fn_DefaultIoctl;
+	DriverObject->MajorFunction[IRP_MJ_DEVICE_CONTROL] = Fn_DefaultIoctl;
 
-	DriverObject->DriverUnload = DriverUnload;
+	DriverObject->DriverUnload = Fn_DriverUnload;
 	status = Fn_CreateDevice(&usDrv, 0x9C40, DriverObject, &a1);
 	if (!NT_SUCCESS(status)){
 		return status;
