@@ -23,9 +23,12 @@ SHA-1: D736BC2D14AFA9F8A1A513DC833E773776FBBE73
 
 Address	            Ordinal	        Name	                                                Library
 0000000140002000		            HalTranslateBusAddress	                                HAL
-0000000140002010		            IofCompleteRequest	ntoskrnl
-0000000140002018		IoCreateSymbolicLink	ntoskrnl
-0000000140002020		IoDeleteDevice	ntoskrnl
+
+0000000140002010		            IofCompleteRequest	                                    ntoskrnl
+
+0000000140002018		            IoCreateSymbolicLink	                                ntoskrnl
+
+0000000140002020		            IoDeleteDevice	                                        ntoskrnl
 0000000140002028		IoDeleteSymbolicLink	ntoskrnl
 0000000140002030		ObReferenceObjectByHandle	ntoskrnl
 0000000140002038		ZwClose	ntoskrnl
