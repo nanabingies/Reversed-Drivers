@@ -1,7 +1,14 @@
+#include <ntddk.h>
+
+struct _devExt {
+	ULONG64			a1;		// 0x00
+	DEVICE_OBJECT	a2;		// 0x08
+};
 
 EXTERN_C NTSTATUS DriverEntry(_In_ PDRIVER_OBJECT DriverObject, _In_ PUNICODE_STRING) {
 	UNICODE_STRING usDrv = RTL_CONSTANT_STRING(L"\\Device\\ASMMAP64");
-	PVOID a1, a2;
+	DEVICE_OBJECT a1;
+	struct _devExt* devExt;
 	NTSTATUS status;
 
 	DriverObject->MajorFunction[IRP_MJ_CREATE] = DefaultIoctl;
@@ -14,9 +21,9 @@ EXTERN_C NTSTATUS DriverEntry(_In_ PDRIVER_OBJECT DriverObject, _In_ PUNICODE_ST
 		return status;
 	}
 
-	a2 = *(PVOID*)((ULONG_PTR)a1 + 0x40);
-	*(PVOID*)((ULONG_PTR)a2 + 0x8) = a1;
-	*(ULONG*)((ULONG_PTR)a2) = 0x9C40;
+	devExt = (struct _devExt*)*(PVOID*)(a1.DeviceExtension);
+	devExt->a2 = a1;
+	devExt->a1 = 0x9C40;
 
 	return status;
 }
