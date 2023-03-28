@@ -1,4 +1,3 @@
-#include <ntddk.h>
 
 struct _devExt {
 	ULONG64			a1;		// 0x00
