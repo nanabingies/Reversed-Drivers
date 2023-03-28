@@ -26,7 +26,7 @@ EXTERN_C NTSTATUS Fn_DefaultIoctl(_In_ PDEVICE_OBJECT DeviceObject, _In_ PIRP Ir
 			break;
 
 		case 0x9C402584:
-			status = Fn_Ummapmem(devExt, Irp);
+			status = Fn_Ummapmem(devExt, Irp, stackLocation);
 			break;
 
 		default:
