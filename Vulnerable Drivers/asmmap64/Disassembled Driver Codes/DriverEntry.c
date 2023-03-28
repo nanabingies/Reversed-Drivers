@@ -6,7 +6,7 @@ struct _devExt {
 
 EXTERN_C NTSTATUS DriverEntry(_In_ PDRIVER_OBJECT DriverObject, _In_ PUNICODE_STRING) {
 	UNICODE_STRING usDrv = RTL_CONSTANT_STRING(L"\\Device\\ASMMAP64");
-	DEVICE_OBJECT a1;
+	PDEVICE_OBJECT a1;
 	struct _devExt* devExt;
 	NTSTATUS status;
 
@@ -20,7 +20,7 @@ EXTERN_C NTSTATUS DriverEntry(_In_ PDRIVER_OBJECT DriverObject, _In_ PUNICODE_ST
 		return status;
 	}
 
-	devExt = (struct _devExt*)*(PVOID*)(a1.DeviceExtension);
+	devExt = (struct _devExt*)*(PVOID*)(a1->DeviceExtension);
 	devExt->a2 = a1;
 	devExt->a1 = 0x9C40;
 
