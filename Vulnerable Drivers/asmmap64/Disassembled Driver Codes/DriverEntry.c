@@ -1,7 +1,7 @@
 
 struct _devExt {
 	ULONG64			a1;		// 0x00
-	DEVICE_OBJECT	a2;		// 0x08
+	PDEVICE_OBJECT	a2;		// 0x08
 };
 
 EXTERN_C NTSTATUS DriverEntry(_In_ PDRIVER_OBJECT DriverObject, _In_ PUNICODE_STRING) {
@@ -20,7 +20,7 @@ EXTERN_C NTSTATUS DriverEntry(_In_ PDRIVER_OBJECT DriverObject, _In_ PUNICODE_ST
 		return status;
 	}
 
-	devExt = (struct _devExt*)*(PVOID*)(a1->DeviceExtension);
+	devExt = (struct _devExt*)(a1->DeviceExtension);
 	devExt->a2 = a1;
 	devExt->a1 = 0x9C40;
 

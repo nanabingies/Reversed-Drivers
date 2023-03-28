@@ -2,7 +2,7 @@
 
 struct _devExt {
 	ULONG64			a1;		// 0x00
-	DEVICE_OBJECT	a2;		// 0x08
+	PDEVICE_OBJECT	a2;		// 0x08
 };
 
 NTSTATUS Fn_CreateDevice(PUNICODE_STRING usDrv, ULONG cons, PDRIVER_OBJECT DriverObject, PDEVICE_OBJECT* devObj) {
@@ -16,7 +16,7 @@ NTSTATUS Fn_CreateDevice(PUNICODE_STRING usDrv, ULONG cons, PDRIVER_OBJECT Drive
 		return status;
 	}
 
-	devExt = (struct _devExt*)*(PVOID*)((*devObj)->DeviceExtension);
+	devExt = (struct _devExt*)((*devObj)->DeviceExtension);
 	RtlZeroMemory(devExt, 0x10);
 	RtlInitUnicodeString(&usDos, L"\\DosDevices\\ASMMAP64");
 	status = IoCreateSymbolicLink(&usDos, usDrv);
