@@ -21,7 +21,7 @@ SHA-1: D736BC2D14AFA9F8A1A513DC833E773776FBBE73
 
 ## IMPORTS
 
-Address&emsp;&emsp;&emsp;&emsp;Ordinal&emsp;&emsp;&emsp;&emsp;Name&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Library
+Address&emsp;&emsp;&emsp;&emsp;Ordinal&emsp;&emsp;&emsp;&emsp;Name&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Library<br>
 0000000140002000		            HalTranslateBusAddress	                                HAL
 
 0000000140002010		            IofCompleteRequest	                                    ntoskrnl
