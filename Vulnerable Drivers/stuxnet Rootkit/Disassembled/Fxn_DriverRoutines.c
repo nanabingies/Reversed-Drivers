@@ -1,5 +1,3 @@
-#include <ntifs.h>
-#include <ntddk.h>
 
 typedef unsigned char* BYTE;
 
