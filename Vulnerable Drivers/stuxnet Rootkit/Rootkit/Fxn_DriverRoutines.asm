@@ -314,3 +314,67 @@
 .text:000105D9                 retn
 .text:000105D9 sub_105A8       endp
 .text:000105D9
+
+
+
+.text:00010822
+.text:00010822 ; =============== S U B R O U T I N E =======================================
+.text:00010822
+.text:00010822 ; Attributes: bp-based frame
+.text:00010822
+.text:00010822 GetRoutineAddress proc near             ; CODE XREF: sub_105A8+13↑p
+.text:00010822
+.text:00010822 var_20          = byte ptr -20h
+.text:00010822 ms_exc          = CPPEH_RECORD ptr -18h
+.text:00010822
+.text:00010822                 push    10h
+.text:00010824                 push    offset stru_13DB8
+.text:00010829                 call    __SEH_prolog
+.text:0001082E                 xor     esi, esi
+.text:00010830                 mov     dword_14128, esi
+.text:00010836                 mov     dword_1412C, esi
+.text:0001083C                 push    esi
+.text:0001083D                 call    Fxn_GetWindowsVersion
+.text:00010842                 test    al, al
+.text:00010844                 jnz     short loc_1088E
+.text:00010846                 mov     [ebp+ms_exc.registration.TryLevel], esi
+.text:00010849                 push    offset aRtlgetversion ; "RtlGetVersion"
+.text:0001084E                 lea     eax, [ebp+var_20]
+.text:00010851                 push    eax
+.text:00010852                 mov     esi, ds:RtlInitUnicodeString
+.text:00010858                 call    esi ; RtlInitUnicodeString
+.text:0001085A                 lea     eax, [ebp+var_20]
+.text:0001085D                 push    eax
+.text:0001085E                 mov     edi, ds:MmGetSystemRoutineAddress
+.text:00010864                 call    edi ; MmGetSystemRoutineAddress
+.text:00010866                 mov     dword_14128, eax
+.text:0001086B                 push    offset aKeareallapcsdi ; "KeAreAllApcsDisabled"
+.text:00010870                 lea     eax, [ebp+var_20]
+.text:00010873                 push    eax
+.text:00010874                 call    esi ; RtlInitUnicodeString
+.text:00010876                 lea     eax, [ebp+var_20]
+.text:00010879                 push    eax
+.text:0001087A                 call    edi ; MmGetSystemRoutineAddress
+.text:0001087C                 mov     dword_1412C, eax
+.text:00010881                 jmp     short loc_1088A
+.text:00010883 ; ---------------------------------------------------------------------------
+.text:00010883
+.text:00010883 loc_10883:                              ; DATA XREF: .rdata:stru_13DB8↓o
+.text:00010883                 xor     eax, eax
+.text:00010885                 inc     eax
+.text:00010886                 retn
+.text:00010887 ; ---------------------------------------------------------------------------
+.text:00010887
+.text:00010887 loc_10887:                              ; DATA XREF: .rdata:stru_13DB8↓o
+.text:00010887                 mov     esp, [ebp+ms_exc.old_esp]
+.text:0001088A
+.text:0001088A loc_1088A:                              ; CODE XREF: GetRoutineAddress+5F↑j
+.text:0001088A                 or      [ebp+ms_exc.registration.TryLevel], 0FFFFFFFFh
+.text:0001088E
+.text:0001088E loc_1088E:                              ; CODE XREF: GetRoutineAddress+22↑j
+.text:0001088E                 mov     eax, offset dword_14128
+.text:00010893                 call    __SEH_epilog
+.text:00010898                 retn
+.text:00010898 GetRoutineAddress endp
+.text:00010898
+.text:00010898 ; ---------------------------------------------------------------------------
