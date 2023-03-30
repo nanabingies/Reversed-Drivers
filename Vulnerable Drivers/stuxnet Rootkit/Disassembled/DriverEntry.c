@@ -5,11 +5,11 @@ extern PVOID unk_13E80[0x1];
 ULONG g_byte_14124 = 0;
 ULONG g_Eax, g_Ecx, g_Esi;
 extern ULONG g_dword_13E99 = 0xAD49A6FE;
+extern PVOID allocatedPool;
 
 VOID sub_11C42();
 
 NTSTATUS DriverEntry(_In_ PDRIVER_OBJECT DriverObject, _In_ PUNICODE_STRING RegistryPath) {
-	PVOID allocatedPool;
 	unsigned char byte_13E98 = 1;
 	WCHAR devStr[] = L"Nr[D ;";	// whole bunch of letters forming the device name.
 	UNICODE_STRING devName;
