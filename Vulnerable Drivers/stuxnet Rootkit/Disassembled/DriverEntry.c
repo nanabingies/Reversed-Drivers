@@ -3,7 +3,6 @@ extern PULONG InitSafeBootMode;
 extern PBOOLEAN KdDebuggerEnabled;
 extern PVOID unk_13E80[0x1];
 ULONG g_byte_14124 = 0;
-ULONG g_Eax, g_Ecx, g_Esi;
 extern ULONG g_dword_13E99 = 0xAD49A6FE;
 extern PVOID allocatedPool;
 
@@ -37,10 +36,7 @@ NTSTATUS DriverEntry(_In_ PDRIVER_OBJECT DriverObject, _In_ PUNICODE_STRING Regi
 	}	
 		
 	do {
-		g_Eax = 0;
-		g_Ecx = &g_dword_13E99;
-		g_Esi = 0x278;
-		sub_11C42();
+		sub_11C42(&g_dword_13E99, 0x278, 0);
 	} while (FALSE);
 
 	if ((g_dword_13E99 & 0x1) != 0) {
