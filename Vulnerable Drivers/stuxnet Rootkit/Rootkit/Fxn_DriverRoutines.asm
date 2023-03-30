@@ -144,3 +144,102 @@
 .text:00010921                 retn
 .text:00010921 RegisterImageCallback endp
 .text:00010921
+
+
+.text:000104C8
+.text:000104C8 ; =============== S U B R O U T I N E =======================================
+.text:000104C8
+.text:000104C8 ; Attributes: bp-based frame
+.text:000104C8
+.text:000104C8 sub_104C8       proc near               ; CODE XREF: sub_10580+C↓p
+.text:000104C8
+.text:000104C8 var_120         = dword ptr -120h
+.text:000104C8 var_C           = word ptr -0Ch
+.text:000104C8 var_4           = dword ptr -4
+.text:000104C8 arg_0           = dword ptr  8
+.text:000104C8
+.text:000104C8                 push    ebp
+.text:000104C9                 mov     ebp, esp
+.text:000104CB                 sub     esp, 120h
+.text:000104D1                 push    esi
+.text:000104D2                 mov     esi, [ebp+arg_0]
+.text:000104D5                 push    edi
+.text:000104D6                 mov     byte ptr [esi], 1
+.text:000104D9                 call    ds:KeGetCurrentIrql
+.text:000104DF                 test    al, al
+.text:000104E1                 jz      short loc_104EB
+.text:000104E3                 mov     byte ptr [esi], 0
+.text:000104E6                 jmp     loc_10578
+.text:000104EB ; ---------------------------------------------------------------------------
+.text:000104EB
+.text:000104EB loc_104EB:                              ; CODE XREF: sub_104C8+19↑j
+.text:000104EB                 lea     esi, [ebp+var_4]
+.text:000104EE                 call    sub_105A8
+.text:000104F3                 push    0
+.text:000104F5                 call    Fxn_GetWindowsVersion
+.text:000104FA                 test    al, al
+.text:000104FC                 jnz     short loc_10578
+.text:000104FE                 push    1
+.text:00010500                 call    Fxn_GetWindowsVersion
+.text:00010505                 test    al, al
+.text:00010507                 jnz     short loc_10578
+.text:00010509                 push    2
+.text:0001050B                 call    Fxn_GetWindowsVersion
+.text:00010510                 test    al, al
+.text:00010512                 mov     edi, [ebp+var_4]
+.text:00010515                 jz      short loc_10565
+.text:00010517                 mov     esi, 11Ch
+.text:0001051C                 push    esi
+.text:0001051D                 lea     eax, [ebp+var_120]
+.text:00010523                 push    0FFh
+.text:00010528                 push    eax
+.text:00010529                 call    memset
+.text:0001052E                 mov     [ebp+var_120], esi
+.text:00010534                 mov     eax, [edi]      ; # var_4
+.text:00010536                 add     esp, 0Ch
+.text:00010539                 test    eax, eax
+.text:0001053B                 jnz     short loc_10544
+.text:0001053D
+.text:0001053D loc_1053D:                              ; CODE XREF: sub_104C8+A2↓j
+.text:0001053D                 mov     eax, 0C0000001h
+.text:00010542                 jmp     short loc_1057A
+.text:00010544 ; ---------------------------------------------------------------------------
+.text:00010544
+.text:00010544 loc_10544:                              ; CODE XREF: sub_104C8+73↑j
+.text:00010544                 lea     ecx, [ebp+var_120]
+.text:0001054A                 push    ecx
+.text:0001054B                 call    eax
+.text:0001054D                 test    eax, eax
+.text:0001054F                 jnz     short loc_1057A
+.text:00010551                 cmp     [ebp+var_C], ax
+.text:00010555                 jnz     short loc_10565
+.text:00010557                 mov     eax, [edi+4]
+.text:0001055A                 neg     eax
+.text:0001055C                 sbb     eax, eax
+.text:0001055E                 and     eax, 0C0000001h
+.text:00010563                 jmp     short loc_1057A
+.text:00010565 ; ---------------------------------------------------------------------------
+.text:00010565
+.text:00010565 loc_10565:                              ; CODE XREF: sub_104C8+4D↑j
+.text:00010565                                         ; sub_104C8+8D↑j
+.text:00010565                 mov     edi, [edi+4]
+.text:00010568                 test    edi, edi
+.text:0001056A                 jz      short loc_1053D
+.text:0001056C                 call    edi
+.text:0001056E                 test    al, al
+.text:00010570                 jz      short loc_10578
+.text:00010572                 mov     eax, [ebp+arg_0]
+.text:00010575                 mov     byte ptr [eax], 0
+.text:00010578
+.text:00010578 loc_10578:                              ; CODE XREF: sub_104C8+1E↑j
+.text:00010578                                         ; sub_104C8+34↑j ...
+.text:00010578                 xor     eax, eax
+.text:0001057A
+.text:0001057A loc_1057A:                              ; CODE XREF: sub_104C8+7A↑j
+.text:0001057A                                         ; sub_104C8+87↑j ...
+.text:0001057A                 pop     edi
+.text:0001057B                 pop     esi
+.text:0001057C                 leave
+.text:0001057D                 retn    4
+.text:0001057D sub_104C8       endp
+.text:0001057D
