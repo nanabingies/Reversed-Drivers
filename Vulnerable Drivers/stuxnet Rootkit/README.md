@@ -19,7 +19,7 @@ SHA-1: CB0793029C60C0BD059FF85DE956619F7FDEB4FD
 
 ## IMPORTS
 
-![Imports](imports.png)
+![Imports](Imports.png)
 
 
 ## SECTIONS
