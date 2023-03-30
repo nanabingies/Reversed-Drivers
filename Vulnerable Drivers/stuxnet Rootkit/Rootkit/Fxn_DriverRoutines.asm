@@ -243,3 +243,50 @@
 .text:0001057D                 retn    4
 .text:0001057D sub_104C8       endp
 .text:0001057D
+
+
+
+.text:0001089A
+.text:0001089A ; =============== S U B R O U T I N E =======================================
+.text:0001089A
+.text:0001089A ; Attributes: bp-based frame
+.text:0001089A
+.text:0001089A Fxn_GetWindowsVersion proc near         ; CODE XREF: sub_104C8+2D↑p
+.text:0001089A                                         ; sub_104C8+38↑p ...
+.text:0001089A
+.text:0001089A var_8           = dword ptr -8
+.text:0001089A var_4           = dword ptr -4
+.text:0001089A arg_0           = dword ptr  8
+.text:0001089A
+.text:0001089A                 push    ebp
+.text:0001089B                 mov     ebp, esp
+.text:0001089D                 push    ecx
+.text:0001089E                 push    ecx
+.text:0001089F                 and     [ebp+var_4], 0
+.text:000108A3                 and     [ebp+var_8], 0
+.text:000108A7                 push    0
+.text:000108A9                 push    0
+.text:000108AB                 lea     eax, [ebp+var_8]
+.text:000108AE                 push    eax
+.text:000108AF                 lea     eax, [ebp+var_4]
+.text:000108B2                 push    eax
+.text:000108B3                 call    ds:PsGetVersion
+.text:000108B9                 cmp     [ebp+var_4], 5
+.text:000108BD                 jnz     short loc_108CC
+.text:000108BF                 mov     eax, [ebp+arg_0]
+.text:000108C2                 cmp     eax, [ebp+var_8]
+.text:000108C5                 jnz     short loc_108CC
+.text:000108C7                 xor     eax, eax
+.text:000108C9                 inc     eax
+.text:000108CA                 jmp     short locret_108CE
+.text:000108CC ; ---------------------------------------------------------------------------
+.text:000108CC
+.text:000108CC loc_108CC:                              ; CODE XREF: Fxn_GetWindowsVersion+23↑j
+.text:000108CC                                         ; Fxn_GetWindowsVersion+2B↑j
+.text:000108CC                 xor     eax, eax
+.text:000108CE
+.text:000108CE locret_108CE:                           ; CODE XREF: Fxn_GetWindowsVersion+30↑j
+.text:000108CE                 leave
+.text:000108CF                 retn    4
+.text:000108CF Fxn_GetWindowsVersion endp
+.text:000108CF
