@@ -7,7 +7,7 @@ VOID DriverReinitializationRoutine(_In_ PDRIVER_OBJECT DriverObject, _In_opt_ PV
 		return;
 	}
 
-	if (sub_10580() != 0x0)	return;
+	if (!NT_SUCCESS(sub_10580()))	return;
 	if (GetHaldllHandle() == FALSE) {
 		IoRegisterDriverReinitialization(DriverObject, DriverReinitializationRoutine, NULL);
 		return;
