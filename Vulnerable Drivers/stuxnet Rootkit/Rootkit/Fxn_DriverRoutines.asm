@@ -97,3 +97,50 @@
 .text:00010671                 retn
 .text:00010671 GetHandle       endp
 .text:00010671
+
+
+
+.text:000108D2
+.text:000108D2 ; =============== S U B R O U T I N E =======================================
+.text:000108D2
+.text:000108D2 ; Attributes: bp-based frame
+.text:000108D2
+.text:000108D2 RegisterImageCallback proc near         ; CODE XREF: DriverReinitializationRoutine:loc_10390↑p
+.text:000108D2
+.text:000108D2 var_8           = byte ptr -8
+.text:000108D2 var_4           = dword ptr -4
+.text:000108D2
+.text:000108D2                 push    ebp
+.text:000108D3                 mov     ebp, esp
+.text:000108D5                 push    ecx
+.text:000108D6                 push    ecx
+.text:000108D7                 and     [ebp+var_4], 0
+.text:000108DB                 push    esi
+.text:000108DC                 push    edi
+.text:000108DD                 lea     esi, [ebp+var_4]
+.text:000108E0                 lea     edi, [ebp+var_8]
+.text:000108E3                 call    sub_10922
+.text:000108E8                 mov     eax, [ebp+var_4]
+.text:000108EB                 test    eax, eax
+.text:000108ED                 jnz     short loc_1091E
+.text:000108EF                 lea     esi, [ebp+var_4]
+.text:000108F2                 call    sub_1097A
+.text:000108F7                 mov     eax, [ebp+var_4]
+.text:000108FA                 call    sub_10A7A
+.text:000108FF                 test    eax, eax
+.text:00010901                 jnz     short loc_1091E
+.text:00010903                 lea     esi, [ebp+var_8]
+.text:00010906                 call    sub_109B6
+.text:0001090B                 lea     esi, [ebp+var_8]
+.text:0001090E                 call    sub_105A8
+.text:00010913                 push    offset NotifyRoutine
+.text:00010918                 call    ds:PsSetLoadImageNotifyRoutine
+.text:0001091E
+.text:0001091E loc_1091E:                              ; CODE XREF: RegisterImageCallback+1B↑j
+.text:0001091E                                         ; RegisterImageCallback+2F↑j
+.text:0001091E                 pop     edi
+.text:0001091F                 pop     esi
+.text:00010920                 leave
+.text:00010921                 retn
+.text:00010921 RegisterImageCallback endp
+.text:00010921
