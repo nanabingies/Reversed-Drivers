@@ -1,5 +1,3 @@
-#include <ntifs.h>
-#include <ntddk.h>
 
 extern PULONG InitSafeBootMode;
 extern PBOOLEAN KdDebuggerEnabled;
