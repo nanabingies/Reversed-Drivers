@@ -290,3 +290,27 @@
 .text:000108CF                 retn    4
 .text:000108CF Fxn_GetWindowsVersion endp
 .text:000108CF
+
+
+
+.text:000105A8
+.text:000105A8 ; =============== S U B R O U T I N E =======================================
+.text:000105A8
+.text:000105A8
+.text:000105A8 sub_105A8       proc near               ; CODE XREF: sub_104C8+26↑p
+.text:000105A8                                         ; RegisterImageCallback+3C↓p
+.text:000105A8                 and     dword ptr [esi], 0
+.text:000105AB                 test    byte ptr dword_14130, 1
+.text:000105B2                 jnz     short loc_105CA
+.text:000105B4                 or      dword_14130, 1
+.text:000105BB                 call    GetRoutineAddress
+.text:000105C0                 mov     edx, offset nullsub_1
+.text:000105C5                 call    sub_107DC
+.text:000105CA
+.text:000105CA loc_105CA:                              ; CODE XREF: sub_105A8+A↑j
+.text:000105CA                 mov     byte_13E88, 0
+.text:000105D1                 mov     dword ptr [esi], offset dword_14128
+.text:000105D7                 mov     eax, esi
+.text:000105D9                 retn
+.text:000105D9 sub_105A8       endp
+.text:000105D9
