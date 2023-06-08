@@ -43,20 +43,10 @@ auto Fn_IRP_MJ_WRITE(_In_ PDEVICE_OBJECT DeviceObject, _In_ PIRP Irp) -> NTSTATU
 	}
 
 	int count = 5;
+    unsigned char* ptr = var_318;
+    
 	do {
-		*(PVOID*)var_330 = *(PVOID*)var_318;
-		*(PVOID*)((UCHAR*)var_330 + 0x10) = *((PVOID*)v9 + 1);
-		*(PVOID*)((UCHAR*)var_330 + 0x20) = *((PVOID*)v9 + 2);
-		*(PVOID*)((UCHAR*)var_330 + 0x30) = *((PVOID*)v9 + 3);
-		*(PVOID*)((UCHAR*)var_330 + 0x40) = *((PVOID*)v9 + 4);
-		*(PVOID*)((UCHAR*)var_330 + 0x50) = *((PVOID*)v9 + 5);
-		*(PVOID*)((UCHAR*)var_330 + 0x60) = *((PVOID*)v9 + 6);
 		
-		var_330 = (var_330 + 0x60);
-		var_330 += 0x80i64;
-		*(PVOID*)(v8 - 16) = *((_OWORD*)v9 + 7);
-		v9 += 0x80;
-		--count;
 	} while (count > 0);
 
 
