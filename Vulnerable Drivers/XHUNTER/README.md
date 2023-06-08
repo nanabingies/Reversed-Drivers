@@ -14,4 +14,9 @@ MD5: 69840B5B619775DE40577F26005288B0
 
 SHA-1: 828D52DEADD700A7F4CED1A0ABA0F83D75FD7F25
 
+Internal Name: xhunter1.sys
+
+Product Name: XIGNCODE3
+
+
 [See full IDA disasembly](Driver%20Codes/ida.asm)
