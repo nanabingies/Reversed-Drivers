@@ -63,17 +63,17 @@ text:0000000140003F98 ; =============== S U B R O U T I N E ====================
 .text:0000000140004011 ; ---------------------------------------------------------------------------
 .text:0000000140004011
 .text:0000000140004011 loc_140004011:                          ; CODE XREF: DriverEntry+67↑j
-.text:0000000140004011                 lea     rax, DriverUnload
+.text:0000000140004011                 lea     rax, Fn_DriverUnload
 .text:0000000140004018                 mov     r9d, 22h ; '"'
 .text:000000014000401E                 mov     [rdi+68h], rax  ; # DriverUnload
 .text:0000000140004022                 lea     r8, [rbp+DriverName]
-.text:0000000140004026                 lea     rax, IRP_MJ_CREATE
+.text:0000000140004026                 lea     rax, Fn_IRP_MJ_CREATE
 .text:000000014000402D                 xor     edx, edx
 .text:000000014000402F                 mov     [rdi+70h], rax  ; # IRP_MJ_CREATE
 .text:0000000140004033                 mov     rcx, rdi
-.text:0000000140004036                 lea     rax, IRP_MJ_CLOSE
+.text:0000000140004036                 lea     rax, Fn_IRP_MJ_CLOSE
 .text:000000014000403D                 mov     [rdi+80h], rax
-.text:0000000140004044                 lea     rax, IRP_MJ_WRITE
+.text:0000000140004044                 lea     rax, Fn_IRP_MJ_WRITE
 .text:000000014000404B                 mov     [rdi+90h], rax
 .text:0000000140004052                 lea     rax, [rbp+DeviceObject]
 .text:0000000140004056                 mov     [rsp+70h+var_40], rax
