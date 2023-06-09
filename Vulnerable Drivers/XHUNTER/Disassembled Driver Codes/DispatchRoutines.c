@@ -1,7 +1,7 @@
 
 
 auto Fn_IRP_MJ_CREATE(_In_ PDEVICE_OBJECT DeviceObject, _In_ PIRP Irp) -> NTSTATUS {
-	InterlockedIncrement((volatile long*)dword_14000A498);
+	InterlockedIncrement((volatile long*)&dword_14000A498);
 	Irp->IoStatus.Status = STATUS_SUCCESS;
 	Irp->IoStatus.Information = 0;
 	IoCompleteRequest(Irp, IO_NO_INCREMENT);
@@ -12,7 +12,7 @@ auto Fn_IRP_MJ_CREATE(_In_ PDEVICE_OBJECT DeviceObject, _In_ PIRP Irp) -> NTSTAT
 
 auto Fn_IRP_MJ_CLOSE(_In_ PDEVICE_OBJECT DeviceObject, _In_ PIRP Irp) -> NTSTATUS {
 	auto ns = sub_140002E60(PsGetCurrentProcessId());
-	InterlockedAdd((volatile long*)dword_14000A498, 0xFFFFFFFF);
+	InterlockedAdd((volatile long*)&dword_14000A498, 0xFFFFFFFF);
 	if (ns == STATUS_SUCCESS) {
 		ZwUnloadDriver(&xmmword_14000A4F0);
 	}
