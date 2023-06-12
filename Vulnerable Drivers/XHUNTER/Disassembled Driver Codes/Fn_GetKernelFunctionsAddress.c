@@ -10,13 +10,16 @@ auto Fn_GetKernelFunctionsAddress() -> NTSTATUS {
 	kernelUtils::_ObRegisterCallbacks = reinterpret_cast<pObRegisterCallbacks>(MmGetSystemRoutineAddress(&usString));
 
 	RtlInitUnicodeString(&usString, L"ObUnRegisterCallbacks");
-	kernelUtils::_ObUnRegisterCallbacks = reinterpret_cast<pObUnRegisterCallbacks>(MmGetSystemRoutineAddress(&usString));
+	kernelUtils::_ObUnRegisterCallbacks = reinterpret_cast<pObUnRegisterCallbacks>
+		(MmGetSystemRoutineAddress(&usString));
 
 	RtlInitUnicodeString(&usString, L"ExfAcquirePushLockExclusive");
-	kernelUtils:: = reinterpret_cast<pExfAcquirePushLockExclusive>(MmGetSystemRoutineAddress(&usString));
+	kernelUtils::_ExfAcquirePushLockExclusive = reinterpret_cast<pExfAcquirePushLockExclusive>
+		(MmGetSystemRoutineAddress(&usString));
 
 	RtlInitUnicodeString(&usString, L"ExfReleasePushLockExclusive");
-	kernelUtils::_ObRegisterCallbacks = reinterpret_cast<pObRegisterCallbacks>(MmGetSystemRoutineAddress(&usString));
+	kernelUtils::_ExfReleasePushLockExclusive = reinterpret_cast<pExfReleasePushLockExclusive>
+		(MmGetSystemRoutineAddress(&usString));
 
 	return STATUS_SUCCESS;
 }
