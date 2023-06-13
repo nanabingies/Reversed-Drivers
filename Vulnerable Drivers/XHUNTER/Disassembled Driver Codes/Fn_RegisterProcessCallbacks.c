@@ -1,5 +1,4 @@
-#pragma once
-#include "stdafx.h"
+
 
 auto Fn_RegisterProcessCallbacks(_In_ PDRIVER_OBJECT) -> NTSTATUS {
 
