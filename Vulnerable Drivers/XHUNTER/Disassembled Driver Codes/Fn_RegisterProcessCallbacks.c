@@ -75,3 +75,132 @@ loc_1400033AC:
 
 	return ntStatus;
 }
+
+
+auto Fn_GetOsVersion() -> NTSTATUS {
+		ULONG dwBuildNumber, dwMinorVersion, dwMajorVersion;
+		NTSTATUS ntStatus = STATUS_UNSUCCESSFUL;
+
+		auto defaultOsVals = [&](OsVersionInfoStruct _OsStruct) -> void {
+			_OsStruct.param0 = &sub_140004780;
+			_OsStruct.param1 = &sub_14000465C;
+			_OsStruct.param2 = &sub_140004604;
+			_OsStruct.param3 = &sub_140004614;
+			_OsStruct.param4 = &sub_14000472C;
+			_OsStruct.param5 = &sub_140004620;
+			_OsStruct.param6 = &sub_1400046EC;
+			_OsStruct.param7 = &sub_14000454C;
+		};
+
+		
+		PsGetVersion(&dwMajorVersion, &dwMinorVersion, &dwBuildNumber, nullptr);
+		if (dwMajorVersion == 10) {		/// Windows 10 & above
+			if (dwMinorVersion == 0) {
+				if (dwBuildNumber >= 0x295A) {
+					defaultOsVals(_OsStruct);
+
+					if (dwBuildNumber > 0x3839)		os_check_num = 0xB;
+					else							os_check_num = 0xA;
+					ntStatus = STATUS_SUCCESS;
+					goto _end;
+				}
+				else {				/// dwBuildNumber < 0x295A
+					os_check_num = 0x9;
+					defaultOsVals(_OsStruct);
+
+					ntStatus = STATUS_SUCCESS;
+					goto _end;
+				}
+			}
+			else {
+				os_check_num = 0x0;
+				ntStatus = STATUS_UNSUCCESSFUL;
+				goto _end;
+			}
+		}
+
+		else if (dwMajorVersion == 6) {		/// Windows Vista -- Windows 8.1
+			if (dwMinorVersion == 3) {		/// Windows 8.1 or Windows Server
+				os_check_num = 0x8;
+				defaultOsVals(_OsStruct);
+
+				ntStatus = STATUS_SUCCESS;
+				goto _end;
+			}
+
+			else if (dwMinorVersion == 2) {			/// Windows Server 2012 or Windows 8
+				os_check_num = 0x7;
+				defaultOsVals(_OsStruct);
+
+				ntStatus = STATUS_SUCCESS;
+				goto _end;
+			}
+
+			else if (dwMinorVersion == 1) {			/// Windows Server 2008 R2 or Windows 7
+				os_check_num = 0x6;
+				_OsStruct.param0 = &sub_1400046E4;
+				_OsStruct.param1 = &sub_140004760;
+				_OsStruct.param2 = &sub_140004604;
+				_OsStruct.param3 = &sub_140004614;
+				_OsStruct.param4 = &sub_14000472C;
+				_OsStruct.param5 = &IoGetCurrentIrpStackLocation;
+				_OsStruct.param6 = &sub_1400046EC;
+				_OsStruct.param7 = &sub_140004770;
+
+				ntStatus = STATUS_SUCCESS;
+				goto _end;
+			}
+
+			else if (dwMinorVersion == 0) {			/// Windows Vista or Windows Server 2008
+				os_check_num = 0x4;
+				_OsStruct.param0 = &sub_14000464C;
+				_OsStruct.param1 = &sub_140004760;
+				_OsStruct.param2 = &sub_140004604;
+				_OsStruct.param3 = &sub_140004614;
+				_OsStruct.param4 = &sub_14000472C;
+				_OsStruct.param5 = &byte_1400045D4;
+				_OsStruct.param6 = &sub_140004628;
+				_OsStruct.param7 = &off_140007258;
+				
+				ntStatus = STATUS_SUCCESS;
+				goto _end;
+			}
+
+			else {
+				os_check_num = 0x0;
+				ntStatus = STATUS_UNSUCCESSFUL;
+				goto _end;
+			}
+		}
+
+		else if (dwMajorVersion == 5) {			/// Windows 2000 -- WIndows Home Server
+			if (dwMinorVersion == 2) {			/// Windows XP x64 or Windows Server 2003 or Windows Home Server
+				os_check_num = 0x3;
+				_OsStruct.param0 = &sub_14000457C;
+				_OsStruct.param1 = &sub_140004760;
+				_OsStruct.param2 = &sub_140004604;
+				_OsStruct.param3 = &sub_140004614;
+				_OsStruct.param4 = &sub_1400045C4;
+				_OsStruct.param5 = &byte_1400045D4;
+				_OsStruct.param6 = &sub_140004628;
+				_OsStruct.param7 = &sub_140004640;
+
+				ntStatus = STATUS_SUCCESS;
+				goto _end;
+			}
+
+			else {
+				os_check_num = 0x0;
+				ntStatus = STATUS_UNSUCCESSFUL;
+				goto _end;
+			}
+		}
+
+		else {
+			os_check_num = 0x0;
+			ntStatus = STATUS_UNSUCCESSFUL;
+		}
+
+	_end:
+		return ntStatus;
+	}
